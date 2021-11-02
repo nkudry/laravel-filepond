@@ -123,7 +123,7 @@ class Filepond extends AbstractFilepond
      * @param  array  $rules
      * @param  array  $messages
      * @param  array  $customAttributes
-     * @return void
+     * @return array
      * @throws \Illuminate\Validation\ValidationException
      */
     public function validate(array $rules, array $messages = [], array $customAttributes = [])
@@ -136,7 +136,9 @@ class Filepond extends AbstractFilepond
             unset($rules[$old]);
         }
 
-        Validator::make([$field => $this->getFile()], $rules, $messages, $customAttributes)->validate();
+//      Validator::make([$field => $this->getFile()], $rules, $messages, $customAttributes)->validate();
+        $validator = Validator::make([$field => $this->getFile()], $rules, $messages, $customAttributes);
+        return $validator;
     }
 
     /**
