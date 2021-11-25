@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Filepond extends Model
 {
+    use \Spiritix\LadaCache\Database\LadaCacheTrait;
     use SoftDeletes;
 
     protected $guarded = [];
